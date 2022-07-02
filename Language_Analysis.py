@@ -61,9 +61,11 @@ for MIndex, MItem in enumerate(Date):
     XTicksLabelList.append(Date[MIndex])
     MItemList.append(MItem)
   elif MItem != MItemList[MIndex-1]:#それ以外は月の初めだけリストに含める
+    MItemList.append(MItem)
+    if (MIndex < 10) or ((len(Date)-1) - MIndex < 10 ):#ただし最初と最後の年/月/日と月の初日の差が10日未満の時は目盛りが被って見にくくなるので除くべき。
+      continue
     XTicksNumberList.append(MIndex)
     XTicksLabelList.append(Date[MIndex])
-    MItemList.append(MItem)
   else:
     MItemList.append(MItem)
   
